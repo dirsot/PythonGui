@@ -1,15 +1,14 @@
 from Tkinter import *
-
+from tkFileDialog   import askopenfilenames
 
 class mojeMenu():
-   
    
 	def __init__(self,root):
 		menubar = Menu(root)
 		self.root = root
 		filemenu = Menu(menubar, tearoff=0)
 		filemenu.add_command(label="New", command=self.donothing)
-		filemenu.add_command(label="Open", command=self.donothing)
+		filemenu.add_command(label="Open", command=self.OnLoad)
 		filemenu.add_command(label="Save", command=self.donothing)
 		filemenu.add_command(label="Save as...", command=self.donothing)
 		filemenu.add_command(label="Close", command=self.donothing)
@@ -41,3 +40,8 @@ class mojeMenu():
 		filewin = Toplevel(self.root)
 		button = Button(filewin, text="Do nothing button")
 		button.pack()
+
+	def OnLoad(self):
+      		fileNames = askopenfilenames(filetypes=[('Split Files', '*')])
+      		for f in fileNames:
+         		print f
